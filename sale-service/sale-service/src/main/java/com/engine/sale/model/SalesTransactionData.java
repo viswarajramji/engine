@@ -1,7 +1,7 @@
 package com.engine.sale.model;
 
 
-public class SalesTransaction {
+public class SalesTransactionData {
     private String agentId;
     private String officeId;
     private String carId;
