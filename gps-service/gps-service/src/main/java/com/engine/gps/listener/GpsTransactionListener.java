@@ -1,5 +1,6 @@
 package com.engine.gps.listener;
 
+import com.engine.gps.constants.ApplicationConstants;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,7 +27,6 @@ public class GpsTransactionListener {
     @Value("${kafka.topic.invalid}")
     private String INVALID_TOPIC;
 
-
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Schema schema;
 
@@ -49,8 +49,7 @@ public class GpsTransactionListener {
             JsonNode jsonNode = objectMapper.readTree(jsonPayload);
             JSONObject jsonObject = new JSONObject(jsonNode.toString());
             schema.validate(jsonObject);
-            // Send valid data to ingest_data_topic
-            kafkaTemplate.send(VALID_TOPIC, jsonPayload);
+            kafkaTemplate.send(VALID_TOPIC, ApplicationConstants.KEY_NAME, jsonPayload);
         } catch (Exception e) {
             kafkaTemplate.send(INVALID_TOPIC, jsonPayload);
         }
