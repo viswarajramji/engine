@@ -21,7 +21,7 @@ public class SampleOracleCRMSystemController {
     static {
         // Adding sample customer data
         Map<String, Object> customer1 = new HashMap<>();
-        customer1.put("customerId", "C123456");
+        customer1.put("customerId", "1");
         customer1.put("mobileNo", "123-456-7890");
         customer1.put("name", "John Doe");
         customer1.put("gender", "Male");
@@ -34,7 +34,7 @@ public class SampleOracleCRMSystemController {
         customer1.put("leasePeriod", 12);
 
         Map<String, Object> customer2 = new HashMap<>();
-        customer2.put("customerId", "C789012");
+        customer2.put("customerId", "2");
         customer2.put("mobileNo", "987-654-3210");
         customer2.put("name", "Jane Smith");
         customer2.put("gender", "Female");
@@ -47,7 +47,7 @@ public class SampleOracleCRMSystemController {
         customer2.put("leasePeriod", 24);
 
         Map<String, Object> customer3 = new HashMap<>();
-        customer3.put("customerId", "C345678");
+        customer3.put("customerId", "3");
         customer3.put("mobileNo", "555-123-4567");
         customer3.put("name", "Alice Johnson");
         customer3.put("gender", "Female");
@@ -60,7 +60,7 @@ public class SampleOracleCRMSystemController {
         customer3.put("leasePeriod", 18);
 
         Map<String, Object> customer4 = new HashMap<>();
-        customer4.put("customerId", "C456789");
+        customer4.put("customerId", "4");
         customer4.put("mobileNo", "666-234-5678");
         customer4.put("name", "Bob Williams");
         customer4.put("gender", "Male");
@@ -73,7 +73,7 @@ public class SampleOracleCRMSystemController {
         customer4.put("leasePeriod", 36);
 
         Map<String, Object> customer5 = new HashMap<>();
-        customer5.put("customerId", "C567890");
+        customer5.put("customerId", "5");
         customer5.put("mobileNo", "777-345-6789");
         customer5.put("name", "Emily Davis");
         customer5.put("gender", "Female");
@@ -86,11 +86,11 @@ public class SampleOracleCRMSystemController {
         customer5.put("leasePeriod", 6);
 
         // Adding all customer data to the map
-        customerData.put("C123456", customer1);
-        customerData.put("C789012", customer2);
-        customerData.put("C345678", customer3);
-        customerData.put("C456789", customer4);
-        customerData.put("C567890", customer5);
+        customerData.put("1", customer1);
+        customerData.put("2", customer2);
+        customerData.put("3", customer3);
+        customerData.put("4", customer4);
+        customerData.put("5", customer5);
     }
 
     @GetMapping("/customer/{id}")

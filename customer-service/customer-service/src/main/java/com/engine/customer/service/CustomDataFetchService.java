@@ -28,12 +28,12 @@ public class CustomDataFetchService {
     @Autowired
     private CustomDataService customDataService;
 
-    private String[] customerIds = {"C123456", "C789012", "C345678", "C456789", "C567890"};
+    private String[] customerIds = {"1", "2", "3", "4", "5"};
     private int currentIndex = 0;
 
-    @Scheduled(fixedRate = 30000) // 30 seconds
+    @Scheduled(fixedRate = 5000) // 30 seconds
     public void fetchCustomerData() {
-        if (customerIds.length == 0) {
+        if (customerIds.length == 0 && currentIndex==5) {
             log.warn("No customer IDs available for fetching data.");
             return;
         }
