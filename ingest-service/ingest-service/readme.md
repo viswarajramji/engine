@@ -158,78 +158,7 @@ By leveraging the Strategy Design Pattern, we achieve a more flexible, maintaina
 
 In addition to real-time streaming analytics, the application supports batch data import to handle large volumes of data efficiently. The following components are implemented for managing batch imports:
 
-```mermaid
-classDiagram
-class PostProcessingApplication {
-+CarDataBatchImportService carDataBatchImportService
-+OfficeBranchDataBatchImportService officeBranchDataBatchImportService
-+SalesAgentDataBatchImportService salesAgentDataBatchImportService
-+void watchFiles()
-}
-class CarDataBatchImportService {
--CarDataModelRepository carDataModelRepository
--String FILE_PATH
-+void refreshCarData()
--List~CarDataModel~ readCarDataFromFile()
-}
-class OfficeBranchDataBatchImportService {
--OfficeBranchDataModelRepository officeBranchDataModelRepository
--String FILE_PATH
-+void refreshOfficeBranchData()
--List~OfficeBranchDataModel~ readOfficeBranchDataFromFile()
-}
-class SalesAgentDataBatchImportService {
--SalesAgentDataRepository salesAgentDataRepository
--String FILE_PATH
-+void refreshSalesAgentData()
--List~SalesAgentDataModel~ readSalesAgentDataFromFile()
-}
-class CarDataModelRepository {
-+void deleteAll()
-+void saveAll(List~CarDataModel~ carEntities)
-}
-class OfficeBranchDataModelRepository {
-+void deleteAll()
-+void saveAll(List~OfficeBranchDataModel~ officeBranchEntities)
-}
-class SalesAgentDataRepository {
-+void deleteAll()
-+void saveAll(List~SalesAgentDataModel~ salesAgentEntities)
-}
-class CarDataModel {
-+String carId
-+String carMake
-+String carModel
-+String plateNo
-+LocalDate registrationDate
-+LocalDate registrationExpiryDate
-}
-class OfficeBranchDataModel {
-+String officeId
-+String mobileNo
-+String area
-+String officeNo
-+String workingHours
-}
-class SalesAgentDataModel {
-+String agentId
-+String mobileNo
-+String name
-+String gender
-+int age
-+String nationality
-+String officeId
-}
-PostProcessingApplication --> CarDataBatchImportService
-PostProcessingApplication --> OfficeBranchDataBatchImportService
-PostProcessingApplication --> SalesAgentDataBatchImportService
-CarDataBatchImportService --> CarDataModelRepository
-OfficeBranchDataBatchImportService --> OfficeBranchDataModelRepository
-SalesAgentDataBatchImportService --> SalesAgentDataRepository
-CarDataModelRepository --> CarDataModel
-OfficeBranchDataModelRepository --> OfficeBranchDataModel
-SalesAgentDataRepository --> SalesAgentDataModel
-```
+[![](https://mermaid.ink/img/pako:eNqtVsGOmzAQ_RXkU6tufiCHStluoo2U7UalR6RqCgasNTayTbZRlP32DoHVGscGUpVLEs-b8XvjF8YnksqMkiVJRMpB6wcGhYIqERE-l5VoL7XZK5lSrZkoVnXNWQqGSRGdOlj7fPkG6gEM3INJy21VS2Viqg4spVEailjZz3mOC_cKRFoGyshJiFUvBk71qqDCBKrpCYBV6yBZFr22iA3DpE-fu9jZ7lFYvdWjRY96wo7zH7SWmhmpju8NcpatvNgo7Hy02e7Wv_arn48uOUVzRXXZl38neEndMW3e7H3fEA1Zv7JRsmpFeTXNOBNbnAt3Vcrx-O1y3Q2vdXspdQ1wQ6OdmHST3Ych2GqADgRuVz7c4lr3MG6pHgZGNQe8enIpYZgauuLcptGFNBwuAY8H0fJrYZhhVM-x3n9jEXCE7c0xXsGz_WdC3qP6cMoYGbujAwK9i7DH28y7_AQv1B9oa11Hag6GfpdWYCdT4Lg7RVsVqENdBkK7MAla_6mZOn5Apw_eJ647MZ--Sv5GTw_Y9hHAv0Cokg__KtULfj7KRulJMwSZQou4jaiAynM-WCejylpnwrTVfflto4Ezc5zqXK8oPOMXi6_h6TYn-Xnm3B6vEs-a1-ExbMnwDp4Zw84nxltrclxcC3JLBN6-rgo_d1-WF-Oj6-R5TJ4IckcqqipgGV4cL5ZPiCkpmpYs8WtGc2i4SfBOeUYoNEbGR5GSpVENvSNKNkVJljlwjb-aOsNXQX_t7CDnv8G7i_0?type=png)](https://mermaid.live/edit#pako:eNqtVsGOmzAQ_RXkU6tufiCHStluoo2U7UalR6RqCgasNTayTbZRlP32DoHVGscGUpVLEs-b8XvjF8YnksqMkiVJRMpB6wcGhYIqERE-l5VoL7XZK5lSrZkoVnXNWQqGSRGdOlj7fPkG6gEM3INJy21VS2Viqg4spVEailjZz3mOC_cKRFoGyshJiFUvBk71qqDCBKrpCYBV6yBZFr22iA3DpE-fu9jZ7lFYvdWjRY96wo7zH7SWmhmpju8NcpatvNgo7Hy02e7Wv_arn48uOUVzRXXZl38neEndMW3e7H3fEA1Zv7JRsmpFeTXNOBNbnAt3Vcrx-O1y3Q2vdXspdQ1wQ6OdmHST3Ych2GqADgRuVz7c4lr3MG6pHgZGNQe8enIpYZgauuLcptGFNBwuAY8H0fJrYZhhVM-x3n9jEXCE7c0xXsGz_WdC3qP6cMoYGbujAwK9i7DH28y7_AQv1B9oa11Hag6GfpdWYCdT4Lg7RVsVqENdBkK7MAla_6mZOn5Apw_eJ647MZ--Sv5GTw_Y9hHAv0Cokg__KtULfj7KRulJMwSZQou4jaiAynM-WCejylpnwrTVfflto4Ezc5zqXK8oPOMXi6_h6TYn-Xnm3B6vEs-a1-ExbMnwDp4Zw84nxltrclxcC3JLBN6-rgo_d1-WF-Oj6-R5TJ4IckcqqipgGV4cL5ZPiCkpmpYs8WtGc2i4SfBOeUYoNEbGR5GSpVENvSNKNkVJljlwjb-aOsNXQX_t7CDnv8G7i_0)
 
 ## PostProcessingApplication
 
