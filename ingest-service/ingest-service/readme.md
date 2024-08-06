@@ -96,34 +96,6 @@ graph TD
 ### Overview
 
 The Strategy Design Pattern is used to define a family of algorithms, encapsulate each one, and make them interchangeable. This pattern allows the algorithm to vary independently from clients that use it.
-
-### Implementation
-
-- **DataProcessorStrategy**: Interface defining the data processing method.
-- **CustomerDataProcessor**: Implementation of `DataProcessorStrategy` for processing customer data.
-- **GpsTransactionDataProcessor**: Implementation of `DataProcessorStrategy` for processing GPS transaction data.
-- **SalesTransactionDataProcessor**: Implementation of `DataProcessorStrategy` for processing sales transaction data.
-- **DataProcessorFactory**: Executes the appropriate strategy based on the data type.
-
-### Advantages
-
-1. **Flexibility and Scalability**:
-    - By encapsulating data processing logic within individual strategies, we can easily extend the system with new data processors without modifying existing code. This enhances the flexibility and scalability of the application.
-
-2. **Code Maintenance**:
-    - Each data processing type is handled by a specific class implementing the `DataProcessorStrategy` interface, leading to cleaner, more maintainable code. This separation of concerns makes it easier to manage and update the codebase.
-
-3. **Independent Service Operation**:
-    - Each service (CustomerDataProcessor, GpsTransactionDataProcessor, SalesTransactionDataProcessor) can operate independently. This reduces the risk of one service's performance issues impacting others, ensuring robust and reliable operation.
-
-4. **Modular Design**:
-    - The use of the Strategy pattern supports a modular design, making it simpler to test individual components. This modularity facilitates better unit testing and debugging, improving overall software quality.
-
-5. **Reduction in Coupling**:
-    - The Strategy pattern reduces the coupling between the context class and the strategies, making the system more adaptable to change. This decoupling is particularly important for systems that require frequent updates or modifications.
-
-By leveraging the Strategy Design Pattern, we achieve a more flexible, maintainable, and scalable architecture for our real-time streaming engine.
-
 ```mermaid
 classDiagram
 class DataProcessorStrategy {
@@ -153,10 +125,110 @@ DataProcessorStrategy <|-- GpsTransactionDataProcessor
 DataProcessorStrategy <|-- SalesTransactionDataProcessor
 DataProcessorFactory --> "1" DataProcessorStrategy : uses
 ```
+### Implementation
+
+- **DataProcessorStrategy**: Interface defining the data processing method.
+- **CustomerDataProcessor**: Implementation of `DataProcessorStrategy` for processing customer data.
+- **GpsTransactionDataProcessor**: Implementation of `DataProcessorStrategy` for processing GPS transaction data.
+- **SalesTransactionDataProcessor**: Implementation of `DataProcessorStrategy` for processing sales transaction data.
+- **DataProcessorFactory**: Executes the appropriate strategy based on the data type.
+
+### Advantages
+
+1. **Flexibility and Scalability**:
+    - By encapsulating data processing logic within individual strategies, we can easily extend the system with new data processors without modifying existing code. This enhances the flexibility and scalability of the application.
+
+2. **Code Maintenance**:
+    - Each data processing type is handled by a specific class implementing the `DataProcessorStrategy` interface, leading to cleaner, more maintainable code. This separation of concerns makes it easier to manage and update the codebase.
+
+3. **Independent Service Operation**:
+    - Each service (CustomerDataProcessor, GpsTransactionDataProcessor, SalesTransactionDataProcessor) can operate independently. This reduces the risk of one service's performance issues impacting others, ensuring robust and reliable operation.
+
+4. **Modular Design**:
+    - The use of the Strategy pattern supports a modular design, making it simpler to test individual components. This modularity facilitates better unit testing and debugging, improving overall software quality.
+
+5. **Reduction in Coupling**:
+    - The Strategy pattern reduces the coupling between the context class and the strategies, making the system more adaptable to change. This decoupling is particularly important for systems that require frequent updates or modifications.
+
+By leveraging the Strategy Design Pattern, we achieve a more flexible, maintainable, and scalable architecture for our real-time streaming engine.
+
 
 # Batch Import Functionality
 
 In addition to real-time streaming analytics, the application supports batch data import to handle large volumes of data efficiently. The following components are implemented for managing batch imports:
+
+```mermaid
+classDiagram
+class PostProcessingApplication {
++CarDataBatchImportService carDataBatchImportService
++OfficeBranchDataBatchImportService officeBranchDataBatchImportService
++SalesAgentDataBatchImportService salesAgentDataBatchImportService
++void watchFiles()
+}
+class CarDataBatchImportService {
+-CarDataModelRepository carDataModelRepository
+-String FILE_PATH
++void refreshCarData()
+-List~CarDataModel~ readCarDataFromFile()
+}
+class OfficeBranchDataBatchImportService {
+-OfficeBranchDataModelRepository officeBranchDataModelRepository
+-String FILE_PATH
++void refreshOfficeBranchData()
+-List~OfficeBranchDataModel~ readOfficeBranchDataFromFile()
+}
+class SalesAgentDataBatchImportService {
+-SalesAgentDataRepository salesAgentDataRepository
+-String FILE_PATH
++void refreshSalesAgentData()
+-List~SalesAgentDataModel~ readSalesAgentDataFromFile()
+}
+class CarDataModelRepository {
++void deleteAll()
++void saveAll(List~CarDataModel~ carEntities)
+}
+class OfficeBranchDataModelRepository {
++void deleteAll()
++void saveAll(List~OfficeBranchDataModel~ officeBranchEntities)
+}
+class SalesAgentDataRepository {
++void deleteAll()
++void saveAll(List~SalesAgentDataModel~ salesAgentEntities)
+}
+class CarDataModel {
++String carId
++String carMake
++String carModel
++String plateNo
++LocalDate registrationDate
++LocalDate registrationExpiryDate
+}
+class OfficeBranchDataModel {
++String officeId
++String mobileNo
++String area
++String officeNo
++String workingHours
+}
+class SalesAgentDataModel {
++String agentId
++String mobileNo
++String name
++String gender
++int age
++String nationality
++String officeId
+}
+PostProcessingApplication --> CarDataBatchImportService
+PostProcessingApplication --> OfficeBranchDataBatchImportService
+PostProcessingApplication --> SalesAgentDataBatchImportService
+CarDataBatchImportService --> CarDataModelRepository
+OfficeBranchDataBatchImportService --> OfficeBranchDataModelRepository
+SalesAgentDataBatchImportService --> SalesAgentDataRepository
+CarDataModelRepository --> CarDataModel
+OfficeBranchDataModelRepository --> OfficeBranchDataModel
+SalesAgentDataRepository --> SalesAgentDataModel
+```
 
 ## PostProcessingApplication
 
