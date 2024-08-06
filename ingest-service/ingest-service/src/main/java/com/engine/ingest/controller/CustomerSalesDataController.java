@@ -5,6 +5,7 @@ import com.engine.ingest.data.CarDrivingStatusPerAreaResponse;
 import com.engine.ingest.model.views.CustomerSalesDataView;
 import com.engine.ingest.repository.CustomerSalesDataRepository;
 import com.engine.ingest.service.CustomerSalesDataService;
+import com.engine.ingest.service.DataExportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,6 +22,9 @@ public class CustomerSalesDataController {
 
     @Autowired
     private CustomerSalesDataService customerSalesDataService;
+
+    @Autowired
+    private DataExportService dataExportService;
 
     @GetMapping
     public List<CustomerSalesDataView> getAllCustomerSalesData() {
@@ -34,6 +39,16 @@ public class CustomerSalesDataController {
     @GetMapping("/countstatusbyarea")
     public  List<CarDrivingStatusPerAreaResponse>  countStatusByArea() {
         return customerSalesDataService.countStatusByArea();
+    }
+
+    @GetMapping("/export")
+    public String exportData() {
+        try {
+            dataExportService.exportDataToFiles();
+            return "Data export completed successfully.";
+        } catch (IOException e) {
+            return "Data export failed: " + e.getMessage();
+        }
     }
 
 
