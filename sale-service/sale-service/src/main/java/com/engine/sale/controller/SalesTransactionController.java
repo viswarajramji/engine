@@ -1,8 +1,8 @@
 package com.engine.sale.controller;
 
-import com.engine.sale.model.SalesTransactionData;
-import com.engine.sale.service.KafkaProducer;
+import com.engine.sale.service.SalesTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 public class SalesTransactionController {
 
     @Autowired
-    private KafkaProducer kafkaProducer;
+    private SalesTransactionService salesTransactionService;
 
     @PostMapping("/transaction")
-    public String postSalesTransaction(@RequestBody SalesTransactionData salesTransaction) {
-        kafkaProducer.sendMessage(salesTransaction);
-        return "Transaction sent to Kafka topic";
+    public ResponseEntity<String> postSalesTransaction(@RequestBody String messagePayload) {
+        salesTransactionService.processMessage(messagePayload);
+        return ResponseEntity.ok("Sale Transaction sent to Kafka topic");
     }
 }

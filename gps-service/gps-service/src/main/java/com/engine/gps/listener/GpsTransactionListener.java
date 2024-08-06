@@ -28,6 +28,7 @@ public class GpsTransactionListener {
     private String INVALID_TOPIC;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
     private final Schema schema;
 
     public GpsTransactionListener() {
@@ -42,7 +43,7 @@ public class GpsTransactionListener {
         }
     }
 
-    @KafkaListener(topics = "${kafka.topic.gps.default}", groupId = "gps-group")
+    @KafkaListener(topics = "${kafka.topic.gps.default}", groupId = "${kafka.consumer.group.id}")
     public void listen(String jsonPayload) {
         try {
             // Deserialize and validate the payload

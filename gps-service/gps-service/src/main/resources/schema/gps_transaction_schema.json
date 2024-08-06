@@ -7,7 +7,7 @@
     "officeId": { "type": "string" },
     "agentId": { "type": "string" },
     "trxnTimestamp": { "type": "string", "format": "date-time" },
-    "carDrivingStatus": { "type": "string", "enum": ["Stopped", "Idle", "Moving"] },
+    "carDrivingStatus": { "type": "string", "enum": ["STOPPED", "IDLE", "MOVING"] },
     "currentLongitude": { "type": "number" },
     "currentLatitude": { "type": "number" },
     "currentArea": { "type": "string" },

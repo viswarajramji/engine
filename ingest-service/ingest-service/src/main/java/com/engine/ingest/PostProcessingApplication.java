@@ -1,8 +1,8 @@
 package com.engine.ingest;
 
-import com.engine.ingest.dataimport.CarDataBatchService;
-import com.engine.ingest.dataimport.OfficeBranchDataBatchService;
-import com.engine.ingest.dataimport.SalesAgentDataBatchService;
+import com.engine.ingest.imports.CarDataBatchImportService;
+import com.engine.ingest.imports.OfficeBranchDataBatchImportService;
+import com.engine.ingest.imports.SalesAgentDataBatchImportService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostProcessingApplication {
 
+    @Autowired
+    private CarDataBatchImportService carDataBatchImportService;
 
     @Autowired
-    private CarDataBatchService carDataBatchService;
+    private OfficeBranchDataBatchImportService officeBranchDataBatchImportService;
 
     @Autowired
-    private OfficeBranchDataBatchService officeBranchDataBatchService;
-
-    @Autowired
-    private SalesAgentDataBatchService salesAgentDataBatchService;
+    private SalesAgentDataBatchImportService salesAgentDataBatchImportService;
 
     @PostConstruct
     public void watchFiles() {
-        carDataBatchService.refreshCarData();
-        officeBranchDataBatchService.refreshOfficeBranchData();
-        salesAgentDataBatchService.refreshSalesAgentData();
+        carDataBatchImportService.refreshCarData();
+        officeBranchDataBatchImportService.refreshOfficeBranchData();
+        salesAgentDataBatchImportService.refreshSalesAgentData();
+
     }
 }

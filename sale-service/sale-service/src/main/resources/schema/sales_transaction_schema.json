@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "agentId": { "type": "string" },
+    "officeId": { "type": "string" },
+    "carId": { "type": "string" },
+    "customerId": { "type": "string" },
+    "amount": { "type": "number" },
+    "transactionTimestamp": { "type": "string", "format": "date-time" },
+    "transactionType": { "type": "string", "enum": ["Purchase", "Refund", "Transfer"] }
+  },
+  "required": ["agentId", "officeId", "carId", "customerId", "amount", "transactionTimestamp", "transactionType"]
+}
