@@ -3,6 +3,8 @@ package com.engine.ingest.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "sales_transactions")
 public class SalesTransactionsModel {
@@ -16,6 +18,7 @@ public class SalesTransactionsModel {
     private String carId;
     private String customerId;
     private Double amount;
+    private LocalDateTime transactionTimestamp;
 
     // Getters and Setters
     public Long getId() {
@@ -64,5 +67,13 @@ public class SalesTransactionsModel {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public LocalDateTime getTransactionTimestamp() {
+        return transactionTimestamp;
+    }
+
+    public void setTransactionTimestamp(LocalDateTime transactionTimestamp) {
+        this.transactionTimestamp = transactionTimestamp;
     }
 }
