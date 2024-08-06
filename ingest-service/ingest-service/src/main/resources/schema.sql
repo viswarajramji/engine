@@ -1,6 +1,7 @@
 create view CUSTOMER_DATA_VIEW as
 
 SELECT
+    ROW_NUMBER() OVER () AS row_num,
     gps.TRXN_TIMESTAMP AS TRXN_Timestamp,
     gps.CAR_DRIVING_STATUS AS Car_Driving_Status,
     gps.CURRENT_LONGITUDE AS Current_Longitude,

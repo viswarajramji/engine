@@ -1,13 +1,11 @@
 package com.engine.ingest.controller;
 
-
 import com.engine.ingest.data.CarDrivingStatusPerAreaResponse;
+import com.engine.ingest.data.SalesCountResponse;
 import com.engine.ingest.model.views.CustomerSalesDataView;
-import com.engine.ingest.repository.CustomerSalesDataRepository;
 import com.engine.ingest.service.CustomerSalesDataService;
 import com.engine.ingest.service.DataExportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +48,13 @@ public class CustomerSalesDataController {
             return "Data export failed: " + e.getMessage();
         }
     }
+
+    @GetMapping("/salescount")
+    public List<SalesCountResponse> getSalesCounts() {
+        return customerSalesDataService.getSalesCount();
+    }
+
+
 
 
 }

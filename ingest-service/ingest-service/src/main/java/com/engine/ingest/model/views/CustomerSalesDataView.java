@@ -12,6 +12,10 @@ import java.time.LocalDate;
 public class CustomerSalesDataView {
 
     @Id
+    @Column(name = "row_num")
+    @JsonProperty("row_num")
+    private Long rowNum;
+
     @Column(name = "TRXN_TIMESTAMP")
     @JsonProperty("TRXN_Timestamp")
     private String trxnTimestamp;

@@ -17,4 +17,14 @@ public interface CustomerSalesDataRepository extends JpaRepository<CustomerSales
             "FROM GpsTransactionModel gps " +
             "GROUP BY gps.currentArea, gps.carDrivingStatus")
     List<Object[]> countCarDrivingStatusPerArea();
+
+    @Query("SELECT " +
+            "EXTRACT(YEAR FROM st.transactionTimestamp) AS transactionYear, " +
+            "EXTRACT(MONTH FROM st.transactionTimestamp) AS transactionMonth, " +
+            "COUNT(st) AS salesCount " +
+            "FROM SalesTransactionsModel st " +
+            "GROUP BY EXTRACT(YEAR FROM st.transactionTimestamp), " +
+            "EXTRACT(MONTH FROM st.transactionTimestamp) " +
+            "ORDER BY transactionYear, transactionMonth")
+    List<Object[]> countSalesPerMonthAndYear();
 }
