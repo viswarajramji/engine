@@ -1,6 +1,7 @@
 package com.engine.ingest.model;
 
 
+import com.engine.ingest.utils.AnonymizationUtil;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,6 +14,7 @@ public class SalesAgentDataModel {
     @Id
     private String agentId;
     private String mobileNo;
+    private String anonymizedMobileNo;
     private String name;
     private String gender;
     private Integer age;
@@ -35,6 +37,7 @@ public class SalesAgentDataModel {
 
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
+        this.anonymizedMobileNo = AnonymizationUtil.anonymize(mobileNo);
     }
 
     public String getName() {
@@ -76,4 +79,9 @@ public class SalesAgentDataModel {
     public void setOfficeId(String officeId) {
         this.officeId = officeId;
     }
+
+    public String getAnonymizedMobileNo() {
+        return anonymizedMobileNo;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.engine.ingest.model;
 
+import com.engine.ingest.utils.AnonymizationUtil;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +11,9 @@ public class OfficeBranchDataModel {
     private String officeId;
 
     private String mobileNo;
+
+    private String anonymizedMobileNo;
+
     private String area;
     private String officeNo;
     private String workingHours;
@@ -29,6 +33,7 @@ public class OfficeBranchDataModel {
 
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
+        this.anonymizedMobileNo = AnonymizationUtil.anonymize(mobileNo);
     }
 
     public String getArea() {
@@ -54,4 +59,9 @@ public class OfficeBranchDataModel {
     public void setWorkingHours(String workingHours) {
         this.workingHours = workingHours;
     }
+
+    public String getAnonymizedMobileNo() {
+        return anonymizedMobileNo;
+    }
+
 }

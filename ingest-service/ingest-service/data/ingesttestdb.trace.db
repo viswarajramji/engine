@@ -1728,3 +1728,569 @@ JOIN
     AND st.CAR_ID = gps.CAR_ID 
     AND st.OFFICE_ID = gps.OFFICE_ID 
     AND st.AGENT_ID = gps.AGENT_ID [42001-224]
+2024-08-06 11:47:56.111111+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CSV.COUNT" not found; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM(csv.count) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.aggregate.AbstractAggregate.optimize(AbstractAggregate.java:101)
+	at org.h2.expression.aggregate.Aggregate.optimize(Aggregate.java:948)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-06 11:48:00.757346+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CSV" not found; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM(csv) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.aggregate.AbstractAggregate.optimize(AbstractAggregate.java:101)
+	at org.h2.expression.aggregate.Aggregate.optimize(Aggregate.java:948)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-06 11:48:05.270719+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM([*]*) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status"; expected "DISTINCT, ALL, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM(*) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [42001-224]
+2024-08-06 11:48:05.844395+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM([*]*) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status"; expected "DISTINCT, ALL, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM(*) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [42001-224]
+2024-08-06 11:48:19.049999+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SUM or AVG on wrong data type for "SUM(CSV.CURRENT_AREA)"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status, SUM( csv.Current_Area) AS count FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [90015-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.aggregate.Aggregate.optimize(Aggregate.java:1009)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-06 11:48:49.143762+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status [*]AS count FROM CUSTOMER_DATA_VIEW csv"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status AS count FROM CUSTOMER_DATA_VIEW csv [42000-224]
+2024-08-06 11:48:49.773533+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status [*]AS count FROM CUSTOMER_DATA_VIEW csv"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status AS count FROM CUSTOMER_DATA_VIEW csv [42000-224]
+2024-08-06 11:50:20.309200+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Invalid use of aggregate function "COUNT(*)"; SQL statement:
+SELECT csv.Current_Area AS area, csv.Car_Driving_Status AS status , SUM(count(*))   FROM CUSTOMER_DATA_VIEW csv GROUP BY csv.Current_Area, csv.Car_Driving_Status [90054-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.analysis.DataAnalysisOperation.mapColumns(DataAnalysisOperation.java:137)
+	at org.h2.expression.aggregate.AbstractAggregate.mapColumnsAnalysis(AbstractAggregate.java:90)
+	at org.h2.expression.aggregate.Aggregate.mapColumnsAnalysis(Aggregate.java:943)
+	at org.h2.expression.analysis.DataAnalysisOperation.mapColumns(DataAnalysisOperation.java:141)
+	at org.h2.command.query.Select.mapColumns(Select.java:1558)
+	at org.h2.command.query.Select.init(Select.java:1100)
+	at org.h2.command.Parser.parseQuery(Parser.java:2501)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-06 12:52:15.795218+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: View "CUSTOMER_DATA_VIEW" already exists; SQL statement:
+create view CUSTOMER_DATA_VIEW as 
+
+SELECT 
+    gps.TRXN_TIMESTAMP AS TRXN_Timestamp,
+    gps.CAR_DRIVING_STATUS AS Car_Driving_Status,
+    gps.CURRENT_LONGITUDE AS Current_Longitude,
+    gps.CURRENT_LATITUDE AS Current_Latitude,
+    gps.CURRENT_AREA AS Current_Area,
+    gps.KM AS KM,
+    st.AMOUNT AS Amount,
+    cd.MOBILE_NO AS customer_mobile_no,
+    cd.ANONYMIZED_MOBILE_NO as customer_anonymized_mobile_no,
+    cd.NAME AS Customer_Name,
+    cd.GENDER AS Customer_Gender,
+    cd.AGE AS Customer_Age,
+    CASE 
+        WHEN cd.AGE < 18 THEN '<18'
+        WHEN cd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN cd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Customer_Age_Band,
+    cd.NATIONALITY AS Customer_Nationality,
+    cd.PASSPORT_NO AS Customer_Passport_No,
+    cd.ID_NO AS Customer_Id_No,
+    cd.HOME_ADDRESS AS Customer_Home_address,
+    cd.LEASE_START_DATE AS Customer_Lease_Start_Date,
+    cd.LEASE_PERIOD AS Customer_Lease_Period,
+    car.CAR_MAKE AS Car_Make,
+    car.CAR_MODEL AS Car_Model,
+    car.PLATE_NO AS Car_Plate_No,
+    car.REGISTRATION_DATE AS Car_Registration_Date,
+    car.REGISTRATION_EXPIRY_DATE AS Car_Registration_Expiry_Date,
+    obd.MOBILE_NO AS Office_Mobile_No,
+    obd.ANONYMIZED_MOBILE_NO as office_anonymized_mobile_no,
+    obd.AREA AS Office_Area,
+    obd.OFFICE_NO AS Office_Office_No,
+    obd.WORKING_HOURS AS Office_Working_Hours,
+    sgd.MOBILE_NO AS Agent_Mobile_No,
+    sgd.ANONYMIZED_MOBILE_NO as agent_anonymized_mobile_no,
+    sgd.NAME AS Agent_Name,
+    sgd.GENDER AS Agent_Gender,
+    sgd.AGE AS Agent_Age,
+    CASE 
+        WHEN sgd.AGE < 18 THEN '<18'
+        WHEN sgd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN sgd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Agent_Age_Band,
+    sgd.NATIONALITY AS Agent_Nationality
+FROM 
+    GPS_TRANSACTIONS gps
+JOIN 
+    CAR_DATA car ON car.CAR_ID = gps.CAR_ID
+JOIN 
+    SALES_AGENT_DATA sgd ON sgd.AGENT_ID = gps.AGENT_ID
+JOIN 
+    CUSTOMER_DATA cd ON cd.CUSTOMER_ID = gps.CUSTOMER_ID
+JOIN 
+    OFFICE_BRANCH_DATA obd ON obd.OFFICE_ID = gps.OFFICE_ID
+JOIN 
+    SALES_TRANSACTIONS st ON st.CUSTOMER_ID = gps.CUSTOMER_ID 
+    AND st.CAR_ID = gps.CAR_ID 
+    AND st.OFFICE_ID = gps.OFFICE_ID 
+    AND st.AGENT_ID = gps.AGENT_ID [90038-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.CreateView.update(CreateView.java:90)
+	at org.h2.command.ddl.SchemaOwnerCommand.update(SchemaOwnerCommand.java:33)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-08-06 12:56:28.823827+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop view CUSTOMER_DATA_VIEW \000d\000a\000d\000a[*]create view CUSTOMER_DATA_VIEW as \000d\000a\000d\000aSELECT \000d\000a    gps.TRXN_TIMESTAMP AS TRXN_Timestamp,\000d\000a    gps.CAR_DRIVING_STATUS AS Car_Driving_Status,\000d\000a    gps.CURRENT_LONGITUDE AS Current_Longitude,\000d\000a    gps.CURRENT_LATITUDE AS Current_Latitude,\000d\000a    gps.CURRENT_AREA AS Current_Area,\000d\000a    gps.KM AS KM,\000d\000a    st.AMOUNT AS Amount,\000d\000a    cd.MOBILE_NO AS customer_mobile_no,\000d\000a    cd.ANONYMIZED_MOBILE_NO as customer_anonymized_mobile_no,\000d\000a    cd.NAME AS Customer_Name,\000d\000a    cd.GENDER AS Customer_Gender,\000d\000a    cd.AGE AS Customer_Age,\000d\000a    CASE \000d\000a        WHEN cd.AGE < 18 THEN '<18'\000d\000a        WHEN cd.AGE BETWEEN 19 AND 30 THEN '19-30'\000d\000a        WHEN cd.AGE BETWEEN 31 AND 50 THEN '31-50'\000d\000a        ELSE '51+'\000d\000a    END AS Customer_Age_Band,\000d\000a    cd.NATIONALITY AS Customer_Nationality,\000d\000a    cd.PASSPORT_NO AS Customer_Passport_No,\000d\000a    cd.ID_NO AS Customer_Id_No,\000d\000a    cd.HOME_ADDRESS AS Customer_Home_address,\000d\000a    cd.LEASE_START_DATE AS Customer_Lease_Start_Date,\000d\000a    cd.LEASE_PERIOD AS Customer_Lease_Period,\000d\000a    car.CAR_MAKE AS Car_Make,\000d\000a    car.CAR_MODEL AS Car_Model,\000d\000a    car.PLATE_NO AS Car_Plate_No,\000d\000a    car.REGISTRATION_DATE AS Car_Registration_Date,\000d\000a    car.REGISTRATION_EXPIRY_DATE AS Car_Registration_Expiry_Date,\000d\000a    obd.MOBILE_NO AS Office_Mobile_No,\000d\000a    obd.ANONYMIZED_MOBILE_NO as office_anonymized_mobile_no,\000d\000a    obd.AREA AS Office_Area,\000d\000a    obd.OFFICE_NO AS Office_Office_No,\000d\000a    obd.WORKING_HOURS AS Office_Working_Hours,\000d\000a    sgd.MOBILE_NO AS Agent_Mobile_No,\000d\000a    sgd.ANONYMIZED_MOBILE_NO as agent_anonymized_mobile_no,\000d\000a    sgd.NAME AS Agent_Name,\000d\000a    sgd.GENDER AS Agent_Gender,\000d\000a    sgd.AGE AS Agent_Age,\000d\000a    CASE \000d\000a        WHEN sgd.AGE < 18 THEN '<18'\000d\000a        WHEN sgd.AGE BETWEEN 19 AND 30 THEN '19-30'\000d\000a        WHEN sgd.AGE BETWEEN 31 AND 50 THEN '31-50'\000d\000a        ELSE '51+'\000d\000a    END AS Agent_Age_Band,\000d\000a    sgd.NATIONALITY AS Agent_Nationality\000d\000aFROM \000d\000a    GPS_TRANSACTIONS gps\000d\000aJOIN \000d\000a    CAR_DATA car ON car.CAR_ID = gps.CAR_ID\000d\000aJOIN \000d\000a    SALES_AGENT_DATA sgd ON sgd.AGENT_ID = gps.AGENT_ID\000d\000aJOIN \000d\000a    CUSTOMER_DATA cd ON cd.CUSTOMER_ID = gps.CUSTOMER_ID\000d\000aJOIN \000d\000a    OFFICE_BRANCH_DATA obd ON obd.OFFICE_ID = gps.OFFICE_ID\000d\000aJOIN \000d\000a    SALES_TRANSACTIONS st ON st.CUSTOMER_ID = gps.CUSTOMER_ID \000d\000a    AND st.CAR_ID = gps.CAR_ID \000d\000a    AND st.OFFICE_ID = gps.OFFICE_ID \000d\000a    AND st.AGENT_ID = gps.AGENT_ID"; SQL statement:
+drop view CUSTOMER_DATA_VIEW 
+
+create view CUSTOMER_DATA_VIEW as 
+
+SELECT 
+    gps.TRXN_TIMESTAMP AS TRXN_Timestamp,
+    gps.CAR_DRIVING_STATUS AS Car_Driving_Status,
+    gps.CURRENT_LONGITUDE AS Current_Longitude,
+    gps.CURRENT_LATITUDE AS Current_Latitude,
+    gps.CURRENT_AREA AS Current_Area,
+    gps.KM AS KM,
+    st.AMOUNT AS Amount,
+    cd.MOBILE_NO AS customer_mobile_no,
+    cd.ANONYMIZED_MOBILE_NO as customer_anonymized_mobile_no,
+    cd.NAME AS Customer_Name,
+    cd.GENDER AS Customer_Gender,
+    cd.AGE AS Customer_Age,
+    CASE 
+        WHEN cd.AGE < 18 THEN '<18'
+        WHEN cd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN cd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Customer_Age_Band,
+    cd.NATIONALITY AS Customer_Nationality,
+    cd.PASSPORT_NO AS Customer_Passport_No,
+    cd.ID_NO AS Customer_Id_No,
+    cd.HOME_ADDRESS AS Customer_Home_address,
+    cd.LEASE_START_DATE AS Customer_Lease_Start_Date,
+    cd.LEASE_PERIOD AS Customer_Lease_Period,
+    car.CAR_MAKE AS Car_Make,
+    car.CAR_MODEL AS Car_Model,
+    car.PLATE_NO AS Car_Plate_No,
+    car.REGISTRATION_DATE AS Car_Registration_Date,
+    car.REGISTRATION_EXPIRY_DATE AS Car_Registration_Expiry_Date,
+    obd.MOBILE_NO AS Office_Mobile_No,
+    obd.ANONYMIZED_MOBILE_NO as office_anonymized_mobile_no,
+    obd.AREA AS Office_Area,
+    obd.OFFICE_NO AS Office_Office_No,
+    obd.WORKING_HOURS AS Office_Working_Hours,
+    sgd.MOBILE_NO AS Agent_Mobile_No,
+    sgd.ANONYMIZED_MOBILE_NO as agent_anonymized_mobile_no,
+    sgd.NAME AS Agent_Name,
+    sgd.GENDER AS Agent_Gender,
+    sgd.AGE AS Agent_Age,
+    CASE 
+        WHEN sgd.AGE < 18 THEN '<18'
+        WHEN sgd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN sgd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Agent_Age_Band,
+    sgd.NATIONALITY AS Agent_Nationality
+FROM 
+    GPS_TRANSACTIONS gps
+JOIN 
+    CAR_DATA car ON car.CAR_ID = gps.CAR_ID
+JOIN 
+    SALES_AGENT_DATA sgd ON sgd.AGENT_ID = gps.AGENT_ID
+JOIN 
+    CUSTOMER_DATA cd ON cd.CUSTOMER_ID = gps.CUSTOMER_ID
+JOIN 
+    OFFICE_BRANCH_DATA obd ON obd.OFFICE_ID = gps.OFFICE_ID
+JOIN 
+    SALES_TRANSACTIONS st ON st.CUSTOMER_ID = gps.CUSTOMER_ID 
+    AND st.CAR_ID = gps.CAR_ID 
+    AND st.OFFICE_ID = gps.OFFICE_ID 
+    AND st.AGENT_ID = gps.AGENT_ID [42000-224]
+2024-08-06 12:56:33.532518+04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: View "CUSTOMER_DATA_VIEW" already exists; SQL statement:
+create view CUSTOMER_DATA_VIEW as 
+
+SELECT 
+    gps.TRXN_TIMESTAMP AS TRXN_Timestamp,
+    gps.CAR_DRIVING_STATUS AS Car_Driving_Status,
+    gps.CURRENT_LONGITUDE AS Current_Longitude,
+    gps.CURRENT_LATITUDE AS Current_Latitude,
+    gps.CURRENT_AREA AS Current_Area,
+    gps.KM AS KM,
+    st.AMOUNT AS Amount,
+    cd.MOBILE_NO AS customer_mobile_no,
+    cd.ANONYMIZED_MOBILE_NO as customer_anonymized_mobile_no,
+    cd.NAME AS Customer_Name,
+    cd.GENDER AS Customer_Gender,
+    cd.AGE AS Customer_Age,
+    CASE 
+        WHEN cd.AGE < 18 THEN '<18'
+        WHEN cd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN cd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Customer_Age_Band,
+    cd.NATIONALITY AS Customer_Nationality,
+    cd.PASSPORT_NO AS Customer_Passport_No,
+    cd.ID_NO AS Customer_Id_No,
+    cd.HOME_ADDRESS AS Customer_Home_address,
+    cd.LEASE_START_DATE AS Customer_Lease_Start_Date,
+    cd.LEASE_PERIOD AS Customer_Lease_Period,
+    car.CAR_MAKE AS Car_Make,
+    car.CAR_MODEL AS Car_Model,
+    car.PLATE_NO AS Car_Plate_No,
+    car.REGISTRATION_DATE AS Car_Registration_Date,
+    car.REGISTRATION_EXPIRY_DATE AS Car_Registration_Expiry_Date,
+    obd.MOBILE_NO AS Office_Mobile_No,
+    obd.ANONYMIZED_MOBILE_NO as office_anonymized_mobile_no,
+    obd.AREA AS Office_Area,
+    obd.OFFICE_NO AS Office_Office_No,
+    obd.WORKING_HOURS AS Office_Working_Hours,
+    sgd.MOBILE_NO AS Agent_Mobile_No,
+    sgd.ANONYMIZED_MOBILE_NO as agent_anonymized_mobile_no,
+    sgd.NAME AS Agent_Name,
+    sgd.GENDER AS Agent_Gender,
+    sgd.AGE AS Agent_Age,
+    CASE 
+        WHEN sgd.AGE < 18 THEN '<18'
+        WHEN sgd.AGE BETWEEN 19 AND 30 THEN '19-30'
+        WHEN sgd.AGE BETWEEN 31 AND 50 THEN '31-50'
+        ELSE '51+'
+    END AS Agent_Age_Band,
+    sgd.NATIONALITY AS Agent_Nationality
+FROM 
+    GPS_TRANSACTIONS gps
+JOIN 
+    CAR_DATA car ON car.CAR_ID = gps.CAR_ID
+JOIN 
+    SALES_AGENT_DATA sgd ON sgd.AGENT_ID = gps.AGENT_ID
+JOIN 
+    CUSTOMER_DATA cd ON cd.CUSTOMER_ID = gps.CUSTOMER_ID
+JOIN 
+    OFFICE_BRANCH_DATA obd ON obd.OFFICE_ID = gps.OFFICE_ID
+JOIN 
+    SALES_TRANSACTIONS st ON st.CUSTOMER_ID = gps.CUSTOMER_ID 
+    AND st.CAR_ID = gps.CAR_ID 
+    AND st.OFFICE_ID = gps.OFFICE_ID 
+    AND st.AGENT_ID = gps.AGENT_ID [90038-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.CreateView.update(CreateView.java:90)
+	at org.h2.command.ddl.SchemaOwnerCommand.update(SchemaOwnerCommand.java:33)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)

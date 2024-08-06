@@ -44,6 +44,10 @@ public class CustomerSalesDataView {
     @JsonProperty("customer_mobile_no")
     private String customerMobileNo;
 
+    @Column(name = "customer_anonymized_mobile_no")
+    @JsonProperty("customer_anonymized_mobile_no")
+    private String customerAnonymizedMobileNo;
+
     @Column(name = "Customer_Name")
     @JsonProperty("Customer_Name")
     private String customerName;
@@ -108,6 +112,10 @@ public class CustomerSalesDataView {
     @JsonProperty("Office_Mobile_No")
     private String officeMobileNo;
 
+    @Column(name = "office_anonymized_mobile_no")
+    @JsonProperty("office_anonymized_mobile_no")
+    private String officeAnonymizedMobileNo;
+
     @Column(name = "Office_Area")
     @JsonProperty("Office_Area")
     private String officeArea;
@@ -123,6 +131,10 @@ public class CustomerSalesDataView {
     @Column(name = "Agent_Mobile_No")
     @JsonProperty("Agent_Mobile_No")
     private String agentMobileNo;
+
+    @Column(name = "agent_anonymized_mobile_no")
+    @JsonProperty("agent_anonymized_mobile_no")
+    private String agentAnonymizedMobileNo;
 
     @Column(name = "Agent_Name")
     @JsonProperty("Agent_Name")
