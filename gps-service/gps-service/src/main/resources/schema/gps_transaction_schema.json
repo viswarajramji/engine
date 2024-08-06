@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "customerId": { "type": "string" },
+    "carId": { "type": "string" },
+    "officeId": { "type": "string" },
+    "agentId": { "type": "string" },
+    "trxnTimestamp": { "type": "string", "format": "date-time" },
+    "carDrivingStatus": { "type": "string", "enum": ["Stopped", "Idle", "Moving"] },
+    "currentLongitude": { "type": "number" },
+    "currentLatitude": { "type": "number" },
+    "currentArea": { "type": "string" },
+    "km": { "type": "number" },
+    "sourceSystem": { "type": "string" }
+  },
+  "required": ["customerId", "carId", "officeId", "agentId", "trxnTimestamp", "carDrivingStatus", "currentLongitude", "currentLatitude", "currentArea", "km", "sourceSystem"]
+}
